@@ -1,0 +1,133 @@
+<div>
+  <h2 id="page-heading" data-cy="DeliveryFeedbackHeading">
+    <span>Delivery Feedbacks</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-delivery-feedback"
+        [routerLink]="['/delivery-feedback/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Delivery Feedback </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="deliveryFeedbacks?.length === 0">
+    <span>No Delivery Feedbacks found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="deliveryFeedbacks && deliveryFeedbacks.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contactName">
+            <div class="d-flex">
+              <span>Contact Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contactEmail">
+            <div class="d-flex">
+              <span>Contact Email</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="driverEmployeeNumber">
+            <div class="d-flex">
+              <span>Driver Employee Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="feedbackResponse.id">
+            <div class="d-flex">
+              <span>Feedback Response</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let deliveryFeedback of deliveryFeedbacks; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/delivery-feedback', deliveryFeedback.id, 'view']">{{ deliveryFeedback.id }}</a>
+          </td>
+          <td>{{ deliveryFeedback.contactName }}</td>
+          <td>{{ deliveryFeedback.contactEmail }}</td>
+          <td>{{ deliveryFeedback.driverEmployeeNumber }}</td>
+          <td>
+            <div *ngIf="deliveryFeedback.feedbackResponse">
+              <a [routerLink]="['/feedback-response', deliveryFeedback.feedbackResponse.id, 'view']">{{
+                deliveryFeedback.feedbackResponse.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/delivery-feedback', deliveryFeedback.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/delivery-feedback', deliveryFeedback.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(deliveryFeedback)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="deliveryFeedbacks && deliveryFeedbacks.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

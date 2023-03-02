@@ -1,0 +1,156 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-feedback-response-heading" data-cy="FeedbackResponseCreateUpdateHeading">Create or edit a Feedback Response</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_minRating">Min Rating</label>
+          <input type="number" class="form-control" name="minRating" id="field_minRating" data-cy="minRating" formControlName="minRating" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_maxRating">Max Rating</label>
+          <input type="number" class="form-control" name="maxRating" id="field_maxRating" data-cy="maxRating" formControlName="maxRating" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_rating">Rating</label>
+          <input type="number" class="form-control" name="rating" id="field_rating" data-cy="rating" formControlName="rating" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_tags">Tags</label>
+          <input type="text" class="form-control" name="tags" id="field_tags" data-cy="tags" formControlName="tags" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_prompt">Prompt</label>
+          <input type="text" class="form-control" name="prompt" id="field_prompt" data-cy="prompt" formControlName="prompt" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_campaign">Campaign</label>
+          <input type="text" class="form-control" name="campaign" id="field_campaign" data-cy="campaign" formControlName="campaign" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_comment">Comment</label>
+          <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
+          <div *ngIf="editForm.get('comment')!.invalid && (editForm.get('comment')!.dirty || editForm.get('comment')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('comment')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" *ngIf="editForm.get('comment')?.errors?.maxlength">
+              This field cannot be longer than 500 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_customerNumber">Customer Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="customerNumber"
+            id="field_customerNumber"
+            data-cy="customerNumber"
+            formControlName="customerNumber"
+          />
+          <div
+            *ngIf="
+              editForm.get('customerNumber')!.invalid && (editForm.get('customerNumber')!.dirty || editForm.get('customerNumber')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('customerNumber')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" *ngIf="editForm.get('customerNumber')?.errors?.maxlength">
+              This field cannot be longer than 40 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_salesOrganization">Sales Organization</label>
+          <input
+            type="text"
+            class="form-control"
+            name="salesOrganization"
+            id="field_salesOrganization"
+            data-cy="salesOrganization"
+            formControlName="salesOrganization"
+          />
+          <div
+            *ngIf="
+              editForm.get('salesOrganization')!.invalid &&
+              (editForm.get('salesOrganization')!.dirty || editForm.get('salesOrganization')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('salesOrganization')?.errors?.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" *ngIf="editForm.get('salesOrganization')?.errors?.maxlength">
+              This field cannot be longer than 10 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_distributionChannel">Distribution Channel</label>
+          <input
+            type="text"
+            class="form-control"
+            name="distributionChannel"
+            id="field_distributionChannel"
+            data-cy="distributionChannel"
+            formControlName="distributionChannel"
+          />
+          <div
+            *ngIf="
+              editForm.get('distributionChannel')!.invalid &&
+              (editForm.get('distributionChannel')!.dirty || editForm.get('distributionChannel')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('distributionChannel')?.errors?.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" *ngIf="editForm.get('distributionChannel')?.errors?.maxlength">
+              This field cannot be longer than 10 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_division">Division</label>
+          <input type="text" class="form-control" name="division" id="field_division" data-cy="division" formControlName="division" />
+          <div *ngIf="editForm.get('division')!.invalid && (editForm.get('division')!.dirty || editForm.get('division')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('division')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" *ngIf="editForm.get('division')?.errors?.maxlength">
+              This field cannot be longer than 10 characters.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+{
+  "applications": ["feedback"],
+  "changelogDate": "20230216212853",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "feedback_response",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "minRating",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "maxRating",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "rating",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "tags",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prompt",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "campaign",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "500"
+    },
+    {
+      "fieldName": "customerNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "40"
+    },
+    {
+      "fieldName": "salesOrganization",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "distributionChannel",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "division",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "FeedbackResponse",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "deliveryFeedback",
+      "otherEntityRelationshipName": "feedbackResponse",
+      "ownerSide": false,
+      "relationshipName": "deliveryFeedback",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

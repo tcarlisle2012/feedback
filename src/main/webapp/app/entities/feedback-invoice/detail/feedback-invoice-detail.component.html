@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="feedbackInvoice">
+      <h2 data-cy="feedbackInvoiceDetailsHeading"><span>Feedback Invoice</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ feedbackInvoice.id }}</span>
+        </dd>
+        <dt><span>Invoice Number</span></dt>
+        <dd>
+          <span>{{ feedbackInvoice.invoiceNumber }}</span>
+        </dd>
+        <dt><span>Delivery Feedback</span></dt>
+        <dd>
+          <div *ngIf="feedbackInvoice.deliveryFeedback">
+            <a [routerLink]="['/delivery-feedback', feedbackInvoice.deliveryFeedback.id, 'view']">{{
+              feedbackInvoice.deliveryFeedback.contactEmail
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/feedback-invoice', feedbackInvoice.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

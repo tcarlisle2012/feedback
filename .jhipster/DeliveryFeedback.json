@@ -1,0 +1,47 @@
+{
+  "applications": ["feedback"],
+  "changelogDate": "20230216212953",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "delivery_feedback",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "contactName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactEmail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "driverEmployeeNumber",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "DeliveryFeedback",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "feedbackResponse",
+      "otherEntityRelationshipName": "deliveryFeedback",
+      "ownerSide": true,
+      "relationshipName": "feedbackResponse",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "feedbackInvoice",
+      "otherEntityRelationshipName": "deliveryFeedback",
+      "relationshipName": "feedbackInvoice",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

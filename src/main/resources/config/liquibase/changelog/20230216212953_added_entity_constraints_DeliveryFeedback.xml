@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DeliveryFeedback.
+    -->
+    <changeSet id="20230216212953-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="feedback_response_id"
+                                 baseTableName="delivery_feedback"
+                                 constraintName="fk_delivery_feedback__feedback_response_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="feedback_response"/>
+    </changeSet>
+</databaseChangeLog>

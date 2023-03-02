@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="feedbackResponse">
+      <h2 data-cy="feedbackResponseDetailsHeading"><span>Feedback Response</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.id }}</span>
+        </dd>
+        <dt><span>Min Rating</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.minRating }}</span>
+        </dd>
+        <dt><span>Max Rating</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.maxRating }}</span>
+        </dd>
+        <dt><span>Rating</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.rating }}</span>
+        </dd>
+        <dt><span>Tags</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.tags }}</span>
+        </dd>
+        <dt><span>Prompt</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.prompt }}</span>
+        </dd>
+        <dt><span>Campaign</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.campaign }}</span>
+        </dd>
+        <dt><span>Comment</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.comment }}</span>
+        </dd>
+        <dt><span>Customer Number</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.customerNumber }}</span>
+        </dd>
+        <dt><span>Sales Organization</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.salesOrganization }}</span>
+        </dd>
+        <dt><span>Distribution Channel</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.distributionChannel }}</span>
+        </dd>
+        <dt><span>Division</span></dt>
+        <dd>
+          <span>{{ feedbackResponse.division }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/feedback-response', feedbackResponse.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

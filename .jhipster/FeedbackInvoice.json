@@ -1,0 +1,32 @@
+{
+  "applications": ["feedback"],
+  "changelogDate": "20230216213053",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "feedback_invoice",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "invoiceNumber",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "FeedbackInvoice",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "contactEmail",
+      "otherEntityName": "deliveryFeedback",
+      "otherEntityRelationshipName": "feedbackInvoice",
+      "relationshipName": "deliveryFeedback",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
