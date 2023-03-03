@@ -1,6 +1,5 @@
 package com.mycompany.myapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.validation.constraints.*;
 import org.springframework.data.annotation.Id;
@@ -33,9 +32,11 @@ public class FeedbackResponse implements Serializable {
     @Column("tags")
     private String tags;
 
+    @Size(max = 2000)
     @Column("prompt")
     private String prompt;
 
+    @Size(max = 2000)
     @Column("campaign")
     private String campaign;
 

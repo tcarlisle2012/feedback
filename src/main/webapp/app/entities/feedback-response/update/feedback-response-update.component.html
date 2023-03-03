@@ -34,11 +34,21 @@
         <div class="row mb-3">
           <label class="form-label" for="field_prompt">Prompt</label>
           <input type="text" class="form-control" name="prompt" id="field_prompt" data-cy="prompt" formControlName="prompt" />
+          <div *ngIf="editForm.get('prompt')!.invalid && (editForm.get('prompt')!.dirty || editForm.get('prompt')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('prompt')?.errors?.maxlength">
+              This field cannot be longer than 2000 characters.
+            </small>
+          </div>
         </div>
 
         <div class="row mb-3">
           <label class="form-label" for="field_campaign">Campaign</label>
           <input type="text" class="form-control" name="campaign" id="field_campaign" data-cy="campaign" formControlName="campaign" />
+          <div *ngIf="editForm.get('campaign')!.invalid && (editForm.get('campaign')!.dirty || editForm.get('campaign')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('campaign')?.errors?.maxlength">
+              This field cannot be longer than 2000 characters.
+            </small>
+          </div>
         </div>
 
         <div class="row mb-3">

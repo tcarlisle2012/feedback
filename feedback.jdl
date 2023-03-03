@@ -49,8 +49,8 @@ entity FeedbackResponse {
   maxRating Long
   rating Double
   tags String
-  prompt String
-  campaign String
+  prompt String maxlength(2000)
+  campaign String maxlength(2000)
   comment String required maxlength(500)
   customerNumber String required maxlength(40)
   salesOrganization String required maxlength(10)

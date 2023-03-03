@@ -26,10 +26,10 @@
             <column name="tags" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="prompt" type="varchar(255)">
+            <column name="prompt" type="varchar(2000)">
                 <constraints nullable="true" />
             </column>
-            <column name="campaign" type="varchar(255)">
+            <column name="campaign" type="varchar(2000)">
                 <constraints nullable="true" />
             </column>
             <column name="comment" type="varchar(500)">

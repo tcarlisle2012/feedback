@@ -52,8 +52,12 @@ export class FeedbackResponseFormService {
       maxRating: new FormControl(feedbackResponseRawValue.maxRating),
       rating: new FormControl(feedbackResponseRawValue.rating),
       tags: new FormControl(feedbackResponseRawValue.tags),
-      prompt: new FormControl(feedbackResponseRawValue.prompt),
-      campaign: new FormControl(feedbackResponseRawValue.campaign),
+      prompt: new FormControl(feedbackResponseRawValue.prompt, {
+        validators: [Validators.maxLength(2000)],
+      }),
+      campaign: new FormControl(feedbackResponseRawValue.campaign, {
+        validators: [Validators.maxLength(2000)],
+      }),
       comment: new FormControl(feedbackResponseRawValue.comment, {
         validators: [Validators.required, Validators.maxLength(500)],
       }),

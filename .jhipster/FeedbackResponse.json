@@ -27,11 +27,15 @@
     },
     {
       "fieldName": "prompt",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "2000"
     },
     {
       "fieldName": "campaign",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "2000"
     },
     {
       "fieldName": "comment",
